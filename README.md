@@ -2,7 +2,7 @@
 
 Code to produce plots for the yearly SciLifeLab report to KTH.
 
-Requires Python 3.
+Requires Python 3. Uses the Plotly library, the Python version.
 
 Input files are located in a directory, and output files are created
 in another.
