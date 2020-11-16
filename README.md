@@ -10,6 +10,16 @@ Code to produce plots for the yearly SciLifeLab report to KTH.
 - Openpyxl Python package
 - XlsxWriter Python package
 
+## Source code organisation
+
+The source code for each year is in its own subdirectory.
+
+The code for 2019 was written to recreate the merged files for that year.
+This code did not exist in this form when the actual reports were processed.
+See https://github.com/senthil10/dc_reporting_scripts instead.
+
+The source code for 2020 is new and used for production.
+
 ## Input files
 
 The Reporting Portal https://reportings.scilifelab.se/ is the primary
@@ -49,10 +59,12 @@ In addition, the Volume Data files attached to each report is also used.
 
 ### Download the Volume data files
 
+TODO
 
-### Create the XLSX file for OO
+### Create the merged files
 
-1. Check and set the parameters for the filepaths in the source code
-   file `facility_data.py`.
+1. Check and set the parameters for the filepaths and other data in
+   the source code file `facility_data.py`.
 
-2. Check that the list of field identifiers for each 
+2. The script `merge_A.py` produces the file
+   `A_Infrastructure Single Data Reported 2020.xlsx`.
