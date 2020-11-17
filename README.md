@@ -28,17 +28,18 @@ combining the data from the reports based on the relevant form.
 
 In addition, the Volume Data files attached to each report is also used.
 
+To perform the operations below, you need to be logged in as an admin
+or staff account at https://reportings.scilifelab.se/
+
 ### Create the aggregate files
 
-1. Login using an admin or staff account at https://reportings.scilifelab.se/
-
-2. Go to the form for this year's reports, e.g.
+1. Go to the form for this year's reports in the Reporting Portal, e.g.
    https://reporting.scilifelab.se/form/c37b50f0a16c4ad2ab277e79a8902f43
    for 2019.
 
-3. Click on the button "Aggregate".
+2. Click on the button "Aggregate".
 
-4. Check the following fields for output.
+3. Check the following fields for output.
    - **Report status filter**: Submitted
    - **Report metadata**: identifier, title
    - **Report history**: [none]
@@ -47,19 +48,28 @@ In addition, the Volume Data files attached to each report is also used.
    - **Table field**: [none]
    - **File format**: Excel (XLSX)
 
-5. Create and download the aggregate file by clicking the button "Aggregate".
+4. Create and download the aggregate file by clicking the button "Aggregate".
 
-6. Check only the "facility" value in the **Report fields**, and then
-   perform an aggregate operation for each value of **Table field**;
+5. Check only the "facility" value in the **Report fields**, and then
+   perform an aggregate operation for *each value* of **Table field**;
    "facility_director", "facility_head", "additional_funding" and
    "immaterial_property_rights".
 
-7. Move these XLSX files to the subdirectory `aggregate_files` for
-   this years report data.
+6. Move these XLSX files to the subdirectory `aggregate_files` for
+   this year's report data.
 
 ### Download the Volume data files
 
-TODO
+1. Go to the form for this year's reports in the Reporting Portal, e.g.
+   https://reporting.scilifelab.se/form/c37b50f0a16c4ad2ab277e79a8902f43
+   for 2019.
+
+2. Click on the number of Reports to go to the list of all reports for
+   that form.
+
+3. Download manually the volume data files for all **submitted** reports
+   to the subdirectory `volume_data_files` for this year's report
+   data. Start from the list of all reports for the relevant form.
 
 ### Create the merged files
 
@@ -67,4 +77,10 @@ TODO
    the source code file `facility_data.py`.
 
 2. The script `merge_A.py` produces the file
-   `A_Infrastructure Single Data Reported 2020.xlsx`.
+   `A_Infrastructure Single Data Reported {year}.xlsx`
+   from the contents of file `orders_Facility_report_{year}.xlsx`.
+
+3. The script `merge_B.py` produces the file
+   `B_Infrastructure FD and HF {year}.xlsx` from the contents of files
+   `orders_Facility_report_{year}_facility_director.xlsx` and
+   `orders_Facility_report_{year}_facility_head.xlsx`.

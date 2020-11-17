@@ -1,6 +1,6 @@
 """Facility Reports 2019.
 
-Create the file 'A_Infrastructure Single Data Reported {YEAR}.xlsx'
+Create the file 'A_Infrastructure Single Data Reported 2019.xlsx'
 """
 
 import os.path
@@ -86,10 +86,12 @@ COLUMN_HEADERS = ["Facility",
                   "Scientific achievements"]
 
 
-def create_A(filepath):
+def merge_A(filepath):
     """Create the A file, containing single-valued fields from the
     infrastructure facility reports.
     """
+    report_data = facility_data.get_report_data()
+
     wb = xlsxwriter.Workbook(filepath)
     head_text_format = wb.add_format({'bold':True,
                                       'text_wrap':True,
@@ -113,14 +115,14 @@ def create_A(filepath):
     ws.set_column(30, 32, 100, long_text_format)
 
     ws.write_row(0, 0, COLUMN_HEADERS)
-    for rownum, report in enumerate(facility_data.get_report_data()):
+    for rownum, report in enumerate(report_data, 1):
         facility = report["facility"]
         platform = facility_data.PLATFORM_LOOKUP[facility]
         rowdata = [facility, platform]
         rowdata.extend([report.get(fid, "") for fid in FIELD_IDENTIFIERS])
-        ws.write_row(rownum+1, 0, rowdata)
+        ws.write_row(rownum, 0, rowdata)
     wb.close()
 
     
 if __name__ == "__main__":
-    create_A(os.path.join(DIRPATH, FILENAME))
+    merge_A(os.path.join(DIRPATH, FILENAME))

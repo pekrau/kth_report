@@ -1,6 +1,6 @@
 """Facility Reports 2020.
 
-Create the file 'A_Infrastructure Single Data Reported {YEAR}.xlsx'
+Create the file 'A_Infrastructure Single Data Reported 2020.xlsx'
 """
 
 import os.path
@@ -44,6 +44,9 @@ cost_salaries
 cost_rents
 cost_other
 number_projects
+number_covid-19_projects
+number_covid-19_FTE_resources
+impact_covid-19
 user_feedback
 innovation_utilization
 technology_development
@@ -79,7 +82,10 @@ COLUMN_HEADERS = ["Facility",
                   "Cost salaries",
                   "Cost rents",
                   "Cost other",
-                  "#Projects",
+                  "# Projects",
+                  "# Covid-19 projects",
+                  "# Covid-19 FTE resources",
+                  "Impact Covid-19",
                   "User feedback",
                   "Innovation utilization",
                   "Technology development",
@@ -110,7 +116,7 @@ def create_A(filepath):
     ws.set_row(0, None, head_text_format)
     ws.set_column(0, 1, 40, normal_text_format)
     ws.set_column(2, 29, 20, normal_text_format)
-    ws.set_column(30, 32, 100, long_text_format)
+    ws.set_column(33, 35, 100, long_text_format)
 
     ws.write_row(0, 0, COLUMN_HEADERS)
     for rownum, report in enumerate(facility_data.get_report_data()):
