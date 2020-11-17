@@ -50,7 +50,7 @@ or staff account at https://reportings.scilifelab.se/
 
 4. Create and download the aggregate file by clicking the button "Aggregate".
 
-5. Check only the "facility" value in the **Report fields**, and then
+5. Check *only* the "facility" value in the **Report fields**, and then
    perform an aggregate operation for *each value* of **Table field**;
    "facility_director", "facility_head", "additional_funding" and
    "immaterial_property_rights".
@@ -77,10 +77,14 @@ or staff account at https://reportings.scilifelab.se/
    the source code file `facility_data.py`.
 
 2. The script `merge_A.py` produces the file
-   `A_Infrastructure Single Data Reported {year}.xlsx`
-   from the contents of file `orders_Facility_report_{year}.xlsx`.
+   `A_Infrastructure Single Data Reported {year}.xlsx` from the
+   contents of file `orders_Facility_report_{year}.xlsx`.
 
 3. The script `merge_B.py` produces the file
-   `B_Infrastructure FD and HF {year}.xlsx` from the contents of files
-   `orders_Facility_report_{year}_facility_director.xlsx` and
+   `B_Infrastructure FD and HF {year}.xlsx` from the contents of the
+   files `orders_Facility_report_{year}_facility_director.xlsx` and
    `orders_Facility_report_{year}_facility_head.xlsx`.
+
+4. The script `merge_C.py` produces the file
+   `C_Infrastructure Other Funding {year}.xlsx` from the contents of
+   the file `orders_Facility_report_{year}_additional_funding.xlsx`.
