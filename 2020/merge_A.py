@@ -1,6 +1,9 @@
 """Facility Reports 2020.
 
 Create the file 'A_Infrastructure Single Data Reported 2020.xlsx'
+
+This code has added a few fields for Covid-19 related information
+compared to 2019. Otherwise it is identical.
 """
 
 import os.path
