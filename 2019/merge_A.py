@@ -12,7 +12,7 @@ import facility_data
 ### Path to directory containing the downloaded aggregate files.
 DIRPATH = os.path.join(facility_data.BASEDIRPATH, "merged_files")
 
-### Standard full file name for the A file.
+### Full file name for the A file.
 FILENAME = "A_Infrastructure Single Data Reported 2019.xlsx"
 
 # List of single-valued field identifiers to collect from the aggregate file.

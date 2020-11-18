@@ -89,10 +89,10 @@ def get_additional_funding_data(filepath=ADDITIONAL_FUNDING_FILEPATH):
     """
     return read_file(filepath)
 
-IMMATERIAL_PROPERTY_RIGHTS_FILEPATH = os.path.join(
+IP_RIGHTS_FILEPATH = os.path.join(
     DIRPATH, f"{BASEFILENAME}_immaterial_property_rights.xlsx")
 
-def get_immaterial_property_rights_data(filepath=IMMATERIAL_PROPERTY_RIGHTS_FILEPATH):
+def get_ip_rights_data(filepath=IP_RIGHTS_FILEPATH):
     """Get the immaterial_propery_rights data."""
     return read_file(filepath)
 
@@ -128,6 +128,6 @@ if __name__ == "__main__":
               get_facility_head_data,
               get_facility_director_data,
               get_additional_funding_data,
-              get_immaterial_property_rights_data]:
+              get_ip_rights_data]:
         data = f()
         print(len(data))

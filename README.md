@@ -88,3 +88,8 @@ or staff account at https://reportings.scilifelab.se/
 4. The script `merge_C.py` produces the file
    `C_Infrastructure Other Funding {year}.xlsx` from the contents of
    the file `orders_Facility_report_{year}_additional_funding.xlsx`.
+
+5. The script `merge_D.py` produces the file
+   `D_Infrastructure Immaterial Property Rights {year}.xlsx` from the
+   contents of the file
+   `orders_Facility_report_{year}_immaterial_property_rights.xlsx`.

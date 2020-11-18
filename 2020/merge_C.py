@@ -2,7 +2,7 @@
 
 Create the file 'C_Infrastructure Other Funding 2020.xlsx'
 
-This code is unchanged compared to 2019.
+Identical (except for year) to the code for 2019.
 """
 
 import os.path

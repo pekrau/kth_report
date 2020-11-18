@@ -12,7 +12,7 @@ import facility_data
 ### Path to directory containing the downloaded aggregate files.
 DIRPATH = os.path.join(facility_data.BASEDIRPATH, "merged_files")
 
-### Standard full file name for the C file.
+### Full file name for the C file.
 FILENAME = "C_Infrastructure Other Funding 2019.xlsx"
 
 
@@ -63,7 +63,7 @@ def merge_C(filepath):
     row = 1
     for facility, platform, grants in facility_funding:
         if len(grants) < 1:
-            print("None for", facility, platform)
+            print("None for", facility)
         elif len(grants) == 1:
             ws.write_row(row, 0, (facility, platform) + grants[0])
             row += 1

@@ -12,7 +12,7 @@ import facility_data
 ### Path to directory containing the downloaded aggregate files.
 DIRPATH = os.path.join(facility_data.BASEDIRPATH, "merged_files")
 
-### Standard full file name for the B file.
+### Full file name for the B file.
 FILENAME = "B_Infrastructure FD and HF 2019.xlsx"
 
 

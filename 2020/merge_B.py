@@ -1,6 +1,9 @@
 """Facility Reports 2020.
 
 Create the file 'B_Infrastructure FD and HF 2020.xlsx'
+
+Added the percentage of salary columns. Otherwise identical to the
+code for 2019.
 """
 
 import os.path
