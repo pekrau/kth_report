@@ -60,9 +60,9 @@ or staff account at https://reportings.scilifelab.se/
 
 ### Download the Volume data files
 
-1. Go to the form for this year's reports in the Reporting Portal, e.g.
-   https://reporting.scilifelab.se/form/c37b50f0a16c4ad2ab277e79a8902f43
-   for 2019.
+1. Go to list of all reports: https://reporting.scilifelab.se/orders
+
+2. Filter according to form ("Facility report 2019") and status ("Submitted").
 
 2. Click on the number of Reports to go to the list of all reports for
    that form.
@@ -93,3 +93,10 @@ or staff account at https://reportings.scilifelab.se/
    `D_Infrastructure Immaterial Property Rights {year}.xlsx` from the
    contents of the file
    `orders_Facility_report_{year}_immaterial_property_rights.xlsx`.
+
+6. The script `merge_D.py` produces the file
+   `E_Infrastructure Users 2019.xlsx` from the contents of the
+   sheet `A. Users` in all the volume data files.
+   NOTE: Some of the `XLSX`/`XLSM` files cause "UserWarning" when read
+   by `openpyxl`. This can be ignored.
+

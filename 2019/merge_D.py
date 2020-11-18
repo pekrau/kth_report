@@ -84,4 +84,3 @@ def merge_D(filepath):
     
 if __name__ == "__main__":
     merge_D(os.path.join(DIRPATH, FILENAME))
-    

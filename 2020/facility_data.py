@@ -99,15 +99,14 @@ def read_file(filepath):
     Return the list of dictionaries.
     """
     wb = openpyxl.load_workbook(filename=filepath)
-    return get_rows(wb)
+    return get_rows(wb.active)
 
-def get_rows(wb):
-    """Get the data for the active sheet as a list of
+def get_rows(ws):
+    """Get the data from the given sheet as a list of
     dictionaries. The first row of the sheet defines the keys, and
     each subsequent row (the data) is stored in a separate
     dictionary. All dictionaries have the same keys.
     """
-    ws = wb.active
     rows = list(ws.rows)
     headers = [cell.value for cell in rows[0] if cell.value]
     result = []
