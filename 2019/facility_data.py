@@ -120,16 +120,15 @@ def read_file(filepath):
         result.append(record)
     return result
 
-def get_users_data(dirpath=VOLDIRPATH):
-    """Get all users for each facility.
+def get_volume_data(sheetname, dirpath=VOLDIRPATH):
+    """Get all data records for a specified sheet for each facility.
     Returns list of dictionaries, where each dictionary is one row.
     """
-    count = 0
     title = "1.  Name of reporting unit* (choose from drop-down menu)"
     result = []
     for filepath in sorted(glob.glob(f"{dirpath}/*.xls[mx]")):
         try:
-            records = read_volume_file(filepath, "A. Users", title)
+            records = read_volume_file(filepath, sheetname, title)
             result.extend(records)
             print(os.path.basename(filepath), len(records))
         except KeyError as error:

@@ -54,7 +54,8 @@ def merge_E(filepath):
                   "6b. For non-specific universities and categories"
                   " in 5a, name the organization"])
 
-    for row, record in enumerate(facility_data.get_users_data(), 1):
+    records = facility_data.get_volume_data("A. Users")
+    for row, record in enumerate(records, 1):
         try:
             facility = record["1.  Name of reporting unit*"
                               " (choose from drop-down menu)"].strip()
