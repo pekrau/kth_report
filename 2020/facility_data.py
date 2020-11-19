@@ -7,6 +7,7 @@ The files were created in and downloaded from the Reporting Portal
 Reporting Portal https://reporting.scilifelab.se/
 """
 
+import glob
 import os.path
 
 import openpyxl
@@ -17,8 +18,12 @@ BASEFILENAME = "orders_Facility_report_2020"
 ### Path to directory containing the downloaded aggregate files.
 DIRPATH = os.path.join(BASEDIRPATH, "aggregate_files")
 
+### Path to directory containing the downloaded volume data files.
+VOLDIRPATH = os.path.join(BASEDIRPATH, "volume_data_files")
+
 
 # Lookup from facility name to platform name.
+# Information from the file "Reporting Units 2020.xlsx"
 PLATFORM_LOOKUP = {
     "Advanced Light Microscopy" : "Cellular and Molecular Imaging",
     "Ancient DNA" : "Genomics",
@@ -54,6 +59,10 @@ PLATFORM_LOOKUP = {
     "Swedish NMR Centre" : "Cellular and Molecular Imaging",
     "Systems Biology" : "Bioinformatics"
 }
+
+# Handle strange cases where facility name has wrong character case.
+PLATFORM_LOOKUP_LOWER = dict([(k.lower(), (k, v))
+                              for k, v in PLATFORM_LOOKUP.items()])
 
 REPORT_FILEPATH = os.path.join(DIRPATH, f"{BASEFILENAME}.xlsx")
 
@@ -95,32 +104,67 @@ def get_ip_rights_data(filepath=IP_RIGHTS_FILEPATH):
     return read_file(filepath)
 
 def read_file(filepath):
-    """Open the Excel file given by the path.
-    Return the list of dictionaries.
+    """Open the Excel file given by the path and read the first sheet.
+    Return a list of dictionaries, one for each row.
     """
     wb = openpyxl.load_workbook(filename=filepath)
-    return get_rows(wb.active)
+    rows = list(wb.active)
+    wb.close()
+    header = [c.value.strip() for c in rows[0]]
+    return [dict(list(zip(header, [c.value for c in row])))
+            for row in rows[1:]]
 
-def get_rows(ws):
-    """Get the data from the given sheet as a list of
-    dictionaries. The first row of the sheet defines the keys, and
-    each subsequent row (the data) is stored in a separate
-    dictionary. All dictionaries have the same keys.
+def get_users_data(dirpath=VOLDIRPATH):
+    """Get all users for each facility.
+    Returns list of dictionaries, where each dictionary is one row.
     """
-    rows = list(ws.rows)
-    headers = [cell.value for cell in rows[0] if cell.value]
+    count = 0
+    title = "1.  Name of reporting unit* (choose from drop-down menu)"
     result = []
-    for row in rows[1:]:
-        data = dict(zip(headers, [cell.value for cell in row]))
-        result.append(data)
+    for filepath in sorted(glob.glob(f"{dirpath}/*.xls[mx]")):
+        try:
+            records = read_volume_file(filepath, "A. Users", title)
+            result.extend(records)
+            print(os.path.basename(filepath), len(records))
+        except KeyError as error:
+            print(os.path.basename(filepath), error)
     return result
+
+def read_volume_file(filepath, sheetname, skip_rows_until):
+    """Open the Excel Volume data file given by the path and read the
+    sheet with the given name, or the first sheet. Return a list
+    of records, where a record is a dictionary with keys from the
+    header row in the sheet.
+    NOTE: Special case; correct the name of one facility.
+    """
+    wb = openpyxl.load_workbook(filename=filepath)
+    ws = wb.get_sheet_by_name(sheetname)
+
+    # Awful kludge to avoid weird behaviour when reading
+    # all rows from a sheet in one file after another...
+    # Get chunks of rows until the first cell has no value.
+    rows = []
+    while True:
+        for row in ws.iter_rows(min_row=len(rows)+1, max_row=len(rows)+100):
+            rows.append([cell.value for cell in row])
+        if not rows[-1] or rows[-1][0] is None: break
+    # Remove empty rows at the end of the list.
+    while rows[-1][0] is None:
+        rows.pop()
+
+    wb.close()
+
+    # Find the header row.
+    for first, row in enumerate(rows):
+        if row[0] and skip_rows_until == row[0]: break
+    headers = [c.strip() for c in rows[first] if c is not None]
+
+    # result = []
+    # for row in rows[first+1:]:
+    #     result.append(dict(zip(headers, row)))
+
+    return [dict(zip(headers, row)) for row in rows[first+1:]]
 
 
 if __name__ == "__main__":
-    for f in [get_report_data,
-              get_facility_head_data,
-              get_facility_director_data,
-              get_additional_funding_data,
-              get_ip_rights_data]:
-        data = f()
-        print(len(data))
+    print(len(get_users_data()))

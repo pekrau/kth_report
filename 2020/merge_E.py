@@ -1,6 +1,6 @@
-"""Facility Reports 2019.
+"""Facility Reports 2020.
 
-Create the file 'E_Infrastructure Users 2019.xlsx'
+Create the file 'E_Infrastructure Users 2020.xlsx'
 """
 
 import json
@@ -14,7 +14,7 @@ import facility_data
 DIRPATH = os.path.join(facility_data.BASEDIRPATH, "merged_files")
 
 ### Full file name for the E file.
-FILENAME = "E_Infrastructure Users 2019.xlsx"
+FILENAME = "E_Infrastructure Users 2020.xlsx"
 
 
 def merge_E(filepath):

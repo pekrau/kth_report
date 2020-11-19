@@ -94,8 +94,8 @@ or staff account at https://reportings.scilifelab.se/
    contents of the file
    `orders_Facility_report_{year}_immaterial_property_rights.xlsx`.
 
-6. The script `merge_D.py` produces the file
-   `E_Infrastructure Users 2019.xlsx` from the contents of the
+6. The script `merge_E.py` produces the file
+   `E_Infrastructure Users {year}.xlsx` from the contents of the
    sheet `A. Users` in all the volume data files.
    NOTE: Some of the `XLSX`/`XLSM` files cause "UserWarning" when read
    by `openpyxl`. This can be ignored.
