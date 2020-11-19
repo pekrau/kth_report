@@ -5,10 +5,10 @@ Code to produce plots for the yearly SciLifeLab report to KTH.
 ## Code requirements
 
 - Python 3
-- Plotly Python package
-- kaleido Python package
-- Openpyxl Python package
-- XlsxWriter Python package
+- Openpyxl Python package: read XLSX and XLSM files
+- XlsxWriter Python package: create XLSX files
+- Plotly Python package: create plots
+- kaleido Python package: create PNG of plots
 
 ## Source code organisation
 

@@ -66,7 +66,7 @@ def merge_D(filepath):
                         "Registered designs",
                         "Registered trademarks"))
     row = 1
-    for facility, platforms, patents in facility_ip:
+    for facility, platform, patents in facility_ip:
         if len(patents) < 1:
             print("None for", facility)
         elif len(patents) == 1:
