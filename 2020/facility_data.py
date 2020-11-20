@@ -118,7 +118,7 @@ def get_volume_data(sheetname, dirpath=VOLDIRPATH):
     """Get all data records for a specified sheet for each facility.
     Returns list of dictionaries, where each dictionary is one row.
     """
-    skip_rows_util = "Name of reporting unit"
+    skip_rows_until = "Name of reporting unit"
     result = []
     for filepath in sorted(glob.glob(f"{dirpath}/*.xls[mx]")):
         try:
