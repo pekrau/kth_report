@@ -27,12 +27,12 @@ def merge_C(filepath):
     facility_funding = []
     for facility, platform in facility_data.PLATFORM_LOOKUP.items():
         grants = []
-        for rowdata in funding_data:
-            if rowdata["facility"] == facility:
+        for record in funding_data:
+            if record["facility"] == facility:
                 grants.append(
-                    (rowdata["additional_funding: Category of financier"],
-                     rowdata["additional_funding: Name/type of financier"],
-                     rowdata["additional_funding: Amount (kSEK)"])
+                    (record["additional_funding: Category of financier"],
+                     record["additional_funding: Name/type of financier"],
+                     record["additional_funding: Amount (kSEK)"])
                 )
         facility_funding.append((facility, platform, grants))
 

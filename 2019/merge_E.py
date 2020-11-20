@@ -52,13 +52,17 @@ def merge_E(filepath):
                   "5. E-mail address of responsible PI*",
                   "6a. Affiliation of PI: Specific university or category*",
                   "6b. For non-specific universities and categories"
-                  " in 5a, name the organization"])
+                       " in 5a, name the organization"])
 
     records = facility_data.get_volume_data("A. Users")
+
+    # This key has been modified to contain only single white-space,
+    # while the files bizarrely contain two white-space after "1."
+    key = "1. Name of reporting unit* (choose from drop-down menu)"
+
     for row, record in enumerate(records, 1):
         try:
-            facility = record["1.  Name of reporting unit*"
-                              " (choose from drop-down menu)"].strip()
+            facility = record[key].strip()
             try:
                 platform = facility_data.PLATFORM_LOOKUP[facility]
             # Bizarrely, sometimes the facility name has wrong character case.

@@ -25,15 +25,15 @@ def merge_D(filepath):
     facility_ip = []
     for facility, platform in facility_data.PLATFORM_LOOKUP.items():
         patents = []
-        for rowdata in ip_data:
-            if rowdata["facility"] == facility:
+        for record in ip_data:
+            if record["facility"] == facility:
                 patents.append(
-                    (rowdata["immaterial_property_rights: Patent title"],
-                     rowdata["immaterial_property_rights: Patent application number"],
+                    (record["immaterial_property_rights: Patent title"],
+                     record["immaterial_property_rights: Patent application number"],
                      # 2018! Must have forgotten to update the form...
-                     rowdata["immaterial_property_rights: Filed or granted during 2018?"],
-                     rowdata["immaterial_property_rights: Registered designs"],
-                     rowdata["immaterial_property_rights: Registered trademarks"])
+                     record["immaterial_property_rights: Filed or granted during 2018?"],
+                     record["immaterial_property_rights: Registered designs"],
+                     record["immaterial_property_rights: Registered trademarks"])
                 )
         facility_ip.append((facility, platform, patents))
 

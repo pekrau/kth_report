@@ -124,15 +124,16 @@ def get_volume_data(sheetname, dirpath=VOLDIRPATH):
     """Get all data records for a specified sheet for each facility.
     Returns list of dictionaries, where each dictionary is one row.
     """
-    title = "1.  Name of reporting unit* (choose from drop-down menu)"
+    skip_rows_until = "Name of reporting unit"
     result = []
     for filepath in sorted(glob.glob(f"{dirpath}/*.xls[mx]")):
         try:
-            records = read_volume_file(filepath, sheetname, title)
+            records = read_volume_file(filepath, sheetname, skip_rows_until)
             result.extend(records)
             print(os.path.basename(filepath), len(records))
         except KeyError as error:
             print(os.path.basename(filepath), error)
+            raise
     return result
 
 def read_volume_file(filepath, sheetname, skip_rows_until):
@@ -157,21 +158,35 @@ def read_volume_file(filepath, sheetname, skip_rows_until):
     while rows[-1][0] is None:
         rows.pop()
 
+    wb.close()
+
     # Find the header row.
     for first, row in enumerate(rows):
-        if row[0] and skip_rows_until == row[0]: break
+        if row[0] and skip_rows_until in row[0]: break
     headers = [c.strip() for c in rows[first] if c is not None]
 
-    key = "1.  Name of reporting unit* (choose from drop-down menu)"
+    # Find the key for the facility name. Groan! This is just terrible...
+    # The reason is that the header "1. Name of reporting unit..."
+    # sometimes has one white-space after "1.", sometimes two.
+    for key in rows[first]:
+        if "Name of reporting unit" in key: break
+    else:
+        raise KeyError("Sorry, could not find the facility name column.")
+
     result = []
     for row in rows[first+1:]:
-        data = dict(zip(headers, row))
+        record = dict(zip(headers, row))
         # *** NOTE *** Special case; correct the name of one facility.
-        if data.get(key) == "Eukaryotic Single Cell Genomics":
-            data[key] = "In Situ Sequencing"
-        result.append(data)
+        if record.get(key) == "Eukaryotic Single Cell Genomics":
+            record[key] = "In Situ Sequencing"
+        result.append(record)
 
-    wb.close()
+    # Modify the key for the facility name to contain only single white-space.
+    proper_key = " ".join(key.split())
+    if proper_key != key:
+        for record in result:
+            record[proper_key] = record.pop(key)
+
     return result
 
 
