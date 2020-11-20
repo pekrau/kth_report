@@ -1,14 +1,19 @@
 # kth_report
 
-Code to produce plots for the yearly SciLifeLab report to KTH.
+Produce aggregate files and plots for the yearly SciLifeLab report to KTH.
 
 ## Code requirements
 
 - Python 3
-- Openpyxl Python package: read XLSX and XLSM files
-- XlsxWriter Python package: create XLSX files
-- Plotly Python package: create plots
-- kaleido Python package: create PNG of plots
+- Openpyxl Python package (read XLSX and XLSM files)
+- XlsxWriter Python package (create XLSX files)
+- Plotly Python package (create plots)
+- kaleido Python package (create PNG of plots)
+
+## Specifications
+
+The specifications for the output files A-H are given in the document
+`Data files for KTH and Infra Reports.xlsx` for each year.
 
 ## Source code organisation
 
@@ -97,6 +102,30 @@ or staff account at https://reportings.scilifelab.se/
 6. The script `merge_E.py` produces the file
    `E_Infrastructure Users {year}.xlsx` from the contents of the
    sheet `A. Users` in all the volume data files.
+
+   NOTE: Some of the `XLSX`/`XLSM` files cause "UserWarning" when read
+   by `openpyxl`. This can be ignored.
+
+7. The script `merge_F.py` produces the file
+   `F_Infrastructure Courses {year}.xlsx` from the contents of the
+   sheet `B. Courses` in all the volume data files.
+
+   NOTE: Some of the `XLSX`/`XLSM` files cause "UserWarning" when read
+   by `openpyxl`. This can be ignored.
+
+8. The script `merge_G.py` produces the file
+   `G_Infrastructure Conferences Symposia Seminars {year}.xlsx` from
+   the contents of the sheet `C. Conf, symp, semin` in all the volume
+   data files.
+
+   NOTE: Some of the `XLSX`/`XLSM` files cause "UserWarning" when read
+   by `openpyxl`. This can be ignored.
+
+9. The script `merge_H.py` produces the file
+   `H_Infrastructure External Collaborations {year}.xlsx` from
+   the contents of the sheet `D. External Collab ` (yes, there is a
+   trailing white-space in the name!)  in all the volume data files.
+
    NOTE: Some of the `XLSX`/`XLSM` files cause "UserWarning" when read
    by `openpyxl`. This can be ignored.
 
