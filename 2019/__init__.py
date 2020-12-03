@@ -1,3 +1,3 @@
 "2019 SciLifeLab report to KTH: Aggregate data files and figures."
 
-__version__ = "0.8"
+__version__ = "0.8.1"

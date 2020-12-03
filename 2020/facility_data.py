@@ -9,6 +9,7 @@ Reporting Portal https://reporting.scilifelab.se/
 
 import glob
 import os.path
+import unicodedata
 
 import openpyxl
 
@@ -146,7 +147,24 @@ def read_volume_file(filepath, sheetname, skip_rows_until):
     rows = []
     while True:
         for row in ws.iter_rows(min_row=len(rows)+1, max_row=len(rows)+100):
-            rows.append([cell.value for cell in row])
+            # Yet another kludge to handle special case where a field
+            # supposed to contain an email address instead contains
+            # a formula that computes the email address from the name
+            # and a given domain name. I am impressed, kind of...
+            # This relies on the formula getting the first name and last
+            # name from the two preceding columns, and having the '@'
+            # before the domain name.
+            values = []
+            for pos, cell in enumerate(row):
+                value = cell.value
+                if isinstance(value, str) and value.startswith("="):
+                    value = row[pos-2].value 
+                    value += "." + row[pos-1].value
+                    value += cell.value[cell.value.index("@"):].rstrip('"')
+                    value = to_ascii(value)
+                    value = value.replace(" ", "-")
+                values.append(value)
+            rows.append(values)
         if not rows[-1] or rows[-1][0] is None: break
     # Remove empty rows at the end of the list.
     while rows[-1][0] is None:
