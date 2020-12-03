@@ -1,6 +1,8 @@
 # kth_report
 
 Produce aggregate files and plots for the yearly SciLifeLab report to KTH.
+For both facility and fellows data.
+
 
 ## Code requirements
 
@@ -10,10 +12,6 @@ Produce aggregate files and plots for the yearly SciLifeLab report to KTH.
 - Plotly Python package (create plots)
 - kaleido Python package (create PNG of plots)
 
-## Specifications
-
-The specifications for the output files A-H are given in the document
-`Data files for KTH and Infra Reports.xlsx` for each year.
 
 ## Source code organisation
 
@@ -24,6 +22,15 @@ This code did not exist in this form when the actual reports were processed.
 See https://github.com/senthil10/dc_reporting_scripts instead.
 
 The source code for 2020 is new and used for production.
+
+
+## Facilities
+
+### Specifications
+
+The specifications for the output files A-H are given in the document
+`Data files for KTH and Infra Reports.xlsx` for each year.
+
 
 ## Input files
 
@@ -36,11 +43,10 @@ In addition, the Volume Data files attached to each report is also used.
 To perform the operations below, you need to be logged in as an admin
 or staff account at https://reportings.scilifelab.se/
 
-### Create the aggregate files
 
-1. Go to the form for this year's reports in the Reporting Portal, e.g.
-   https://reporting.scilifelab.se/form/c37b50f0a16c4ad2ab277e79a8902f43
-   for 2019.
+## Create the aggregate files
+
+1. Go to the form for this year's Facility reports in the Reporting Portal.
 
 2. Click on the button "Aggregate".
 
@@ -63,18 +69,16 @@ or staff account at https://reportings.scilifelab.se/
 6. Move these XLSX files to the subdirectory `aggregate_files` for
    this year's report data.
 
+
 ### Download the Volume data files
 
-1. Go to list of all reports: https://reporting.scilifelab.se/orders
+1. Go to the list of all reports.
 
-2. Filter according to form ("Facility report 2019") and status ("Submitted").
+2. Filter by the appropriate form, and the status "Submitted".
 
-2. Click on the number of Reports to go to the list of all reports for
-   that form.
+3. Download manually the volume data files for all reports to the
+   subdirectory `volume_data_files` for this year's report data.
 
-3. Download manually the volume data files for all **submitted** reports
-   to the subdirectory `volume_data_files` for this year's report
-   data. Start from the list of all reports for the relevant form.
 
 ### Create the merged files
 
@@ -125,6 +129,63 @@ or staff account at https://reportings.scilifelab.se/
    `H_Infrastructure External Collaborations {year}.xlsx` from
    the contents of the sheet `D. External Collab ` (yes, there is a
    trailing white-space in the name!)  in all the volume data files.
+
+   NOTE: Some of the `XLSX`/`XLSM` files cause "UserWarning" when read
+   by `openpyxl`. This can be ignored.
+
+
+## Fellows
+
+### Input files
+
+The Reporting Portal https://reportings.scilifelab.se/ is the primary
+data source. The "Aggregate" feature is used to create XLSX files
+combining the data from the reports based on the relevant form.
+
+In addition, the Volume Data files attached to each report is also used.
+
+To perform the operations below, you need to be logged in as an admin
+or staff account at https://reportings.scilifelab.se/
+
+
+## Create the aggregate files
+
+1. Go to the form for this year's Fellow reports in the Reporting Portal.
+
+2. Click on the button "Aggregate".
+
+3. Check the following fields for output.
+   - **Report status filter**: Submitted
+   - **Report metadata**: identifier, title
+   - **Report history**: [none]
+   - **Report owner**: [all]
+   - **Report fields**: [all except volume_data]
+   - **File format**: Excel (XLSX)
+
+4. Create and download the aggregate file by clicking the button "Aggregate".
+
+5. Move these XLSX files to the subdirectory `aggregate_files` for
+   this year's report data.
+
+
+### Download the Volume data files
+
+1. Go to the list of all reports.
+
+2. Filter by the appropriate form, and the status "Submitted".
+
+3. Download manually the volume data files for all reports to the
+   subdirectory `volume_data_files` for this year's report data.
+
+
+### Create the merged files
+
+1. Check and set the parameters for the filepaths and other data in
+   the source code file `merge_fellows.py`.
+
+2. Run the script `merge_fellows.py`, which produces the files
+   `Fellows {year} Teaching.xlsx`, 'Fellows {year} Grants.xlsx'
+   and 'Fellows {year} Collaborations.xlsx' from the volume data files.
 
    NOTE: Some of the `XLSX`/`XLSM` files cause "UserWarning" when read
    by `openpyxl`. This can be ignored.
