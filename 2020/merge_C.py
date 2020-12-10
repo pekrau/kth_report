@@ -64,12 +64,10 @@ def merge_C(filepath):
                         "Amount (kSEK)"))
     row = 1
     for facility, platform, grants in facility_funding:
-        if len(grants) < 1:
-            print("None for", facility, platform)
-        elif len(grants) == 1:
+        if len(grants) == 1:
             ws.write_row(row, 0, (facility, platform) + grants[0])
             row += 1
-        else:
+        elif len(grants) > 1:
             ws.merge_range(row, 0, row + len(grants)-1, 0, facility)
             ws.merge_range(row, 1, row + len(grants)-1, 1, platform)
             for grant in grants:

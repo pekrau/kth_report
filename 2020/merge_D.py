@@ -69,12 +69,10 @@ def merge_D(filepath):
                         "Registered trademarks"))
     row = 1
     for facility, platform, patents in facility_ip:
-        if len(patents) < 1:
-            print("None for", facility)
-        elif len(patents) == 1:
+        if len(patents) == 1:
             ws.write_row(row, 0, (facility, platform) + patents[0])
             row += 1
-        else:
+        elif len(patents) > 1:
             ws.merge_range(row, 0, row + len(patents)-1, 0, facility)
             ws.merge_range(row, 1, row + len(patents)-1, 1, platform)
             for patent in patents:

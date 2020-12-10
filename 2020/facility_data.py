@@ -27,6 +27,7 @@ VOLDIRPATH = os.path.join(BASEDIRPATH, "volume_data_files")
 # Information from the file "Reporting Units 2020.xlsx"
 PLATFORM_LOOKUP = {
     "Advanced Light Microscopy" : "Cellular and Molecular Imaging",
+    "Advanced Light Microscopy (ALM)" : "Cellular and Molecular Imaging",
     "Ancient DNA" : "Genomics",
     "Autoimmunity and Serology Profiling" : "Proteomics and Metabolomics",
     "BioImage Informatics" : "Cellular and Molecular Imaging",
