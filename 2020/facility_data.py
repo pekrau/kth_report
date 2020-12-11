@@ -33,6 +33,8 @@ PLATFORM_LOOKUP = {
     "BioImage Informatics" : "Cellular and Molecular Imaging",
     "Cell Profiling" : "Cellular and Molecular Imaging",
     "Chemical Biology Consortium Sweden" : "Chemical Biology and Genome Engineering",
+    "Chemical Biology Consortium Sweden (KI)" : "Chemical Biology and Genome Engineering",
+    "Chemical Biology Consortium Sweden (UmU)" : "Chemical Biology and Genome Engineering",
     "Chemical Proteomics and Proteogenomics (MBB)" : "Proteomics and Metabolomics",
     "Chemical Proteomics and Proteogenomics (OnkPat)" : "Proteomics and Metabolomics",
     "Clinical Genomics Gothenburg" : "Diagnostics Development",
