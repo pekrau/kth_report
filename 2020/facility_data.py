@@ -55,6 +55,7 @@ PLATFORM_LOOKUP = {
     "Mass Cytometry (LiU)" : "Proteomics and Metabolomics",
     "Microbial Single Cell Genomics" : "Genomics",
     "National Genomics Infrastructure" : "Genomics",
+    "NGI" : "Genomics",
     "PLA and Single Cell Proteomics" : "Proteomics and Metabolomics",
     "Plasma Profiling" : "Proteomics and Metabolomics",
     "Protein Science Facility" : "Cellular and Molecular Imaging",
