@@ -47,9 +47,9 @@ cost_salaries
 cost_rents
 cost_other
 number_projects
-number_covid-19_projects
-number_covid-19_FTE_resources
-impact_covid-19
+number_projects_covid19
+fte_covid19
+impact_covid19
 user_feedback
 innovation_utilization
 technology_development
