@@ -1,6 +1,6 @@
 # kth_report
 
-Produce aggregate files and plots for the yearly SciLifeLab report to KTH.
+Produce merged files and plots for the yearly SciLifeLab report to KTH.
 For both facility and fellows data.
 
 
