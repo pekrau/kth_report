@@ -34,13 +34,23 @@ for record in records:
     except KeyError:
         facility[record["affiliation"]] = 0
 
+all_affiliations = set()
 for facility, affiliations in counts.items():
-    print(facility),
-    print(sorted(affiliations.items()))
+    all_affiliations.update(affiliations)
+    # print(facility),
+    # print(sorted(affiliations.items()))
+all_affiliations = sorted(all_affiliations)
+print(all_affiliations)
+affiliation_ypos = dict([(a, y) for y, a in enumerate(all_affiliations)])
+print(affiliation_ypos)
 
 colours = ["#1E3F32", "#01646B", "#4f9b74", "#80C41C", "#1b918d", "378CAF",
            "#468365", "#AECE53", "#87B0AB", "#AEC69C", "#819e90", "#B1B0B1",
            "#1E3F32", "#01646B", "#4f9b74", "#80C41C", "#1b918d"]
+
+trace = {"x": [], "y": [], "mode": "markers", "type": "scatter"}
+for xpos, facility in enum(counts):
+    ypos = 1
 
 # go = go.Figure()
 
