@@ -1,0 +1,7 @@
+The merged files and the figure 5 are created by a set of Python scripts
+that take aggregate files from the Reporting Portal as input.
+
+The detailed description is found in the README file of the GitHub repo
+where the code is:
+
+https://github.com/pekrau/kth_report

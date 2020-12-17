@@ -134,6 +134,17 @@ or staff account at https://reportings.scilifelab.se/
    by `openpyxl`. This can be ignored.
 
 
+### Create the plot named "Figure 5" (affiliations of users of facilities)
+
+The Python script `make_fig5.py` uses the Python library of Plotly and
+a few other packages to produce a large PNG file of a scatterplot of
+affiliations versus facilities, where the size of each circle shows
+the number of unique users.
+
+The input file is an Excel file with columns as documented in the code.
+It is produced from the merged files (above) "by hand".
+
+
 ## Fellows
 
 ### Input files
