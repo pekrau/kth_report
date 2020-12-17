@@ -35,9 +35,11 @@ COLLABORATIONS_HEADER = '1. Name of organization*'
 COLLABORATIONS_COLS = 8
 COLLABORATIONS_OUTPUT_NAME = 'Fellows 2020 Collaborations.xlsx'
 
+count = 0
 for filename in os.listdir(INPUT_DIRPATH):
     if not fnmatch.fnmatch(filename, "*.xls[xm]"): continue
     print(filename)
+    count += 1
     filepath = os.path.join(INPUT_DIRPATH, filename)
     wb =  openpyxl.load_workbook(filepath, read_only=True, data_only=True)
 
@@ -124,6 +126,8 @@ for filename in os.listdir(INPUT_DIRPATH):
         row.insert(0, row.pop())
         row.insert(0, row.pop())
         collaborations.append(row)
+
+print("Read", count, "input Volume data files.")
 
 # Output merged Teaching data.
 wb = xlsxwriter.Workbook(os.path.join(OUTPUT_DIRPATH, TEACHING_OUTPUT_NAME))
