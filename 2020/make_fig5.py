@@ -12,14 +12,14 @@ import plotly.graph_objects as go
 
 import facility_data
 
-VERSION = "1"
+VERSION = "2"
 
 INPUTFILENAME = os.path.join(facility_data.BASEDIRPATH,
                              "figures",
                              "Analyses Users 2020 for fig 5.xlsx")
 OUTPUTFILENAME = os.path.join(facility_data.BASEDIRPATH,
                               "figures",
-                              "fig_5.png")
+                              "fig_5_2020.png")
 
 
 # Browser
@@ -41,10 +41,33 @@ else:
 
 
 def get_marker_size(number):
-    # Scaling for year 2019
-    # return SCALE * (5 * math.sqrt(number) + 5)
-    # Scaling for year 2020; changed to avoid overlaps.
-    return SCALE * (3 * math.sqrt(number) + 4)
+    """Same scaling as for year 2019. Produces more overlap between circles.
+    But this was considered OK, since it does reflect the reality.
+    """
+    return SCALE * (5 * math.sqrt(number) + 5)
+
+# SciLifeLab brand colors, 50% and 75% tint (saturation)
+# Cycle through the scale a few times...
+colors = ["#D3E4A3", "#BDD775",  # Lime
+          "#82AEB2", "#43858B",  # Teal
+          "#A6CBCF", "#79B1B7",  # Aqua
+          "#A48FA9", "#77577E",  # Grape
+          "#A6A6A6", "#3F3F3F",  # Gray
+          "#D3E4A3", "#BDD775",   # Lime
+          "#82AEB2", "#43858B",  # Teal
+          "#A6CBCF", "#79B1B7",  # Aqua
+          "#A48FA9", "#77577E",  # Grape
+          "#A6A6A6", "#3F3F3F",  # Gray
+]
+
+# Colours from 2019 JavaScript code.
+# Cycle through the scale a few times...
+# colors = ["#1E3F32", "#01646B", "#4f9b74", "#80C41C", "#1b918d", "#378CAF",
+#           "#468365", "#AECE53", "#87B0AB", "#AEC69C", "#819e90", "#B1B0B1",
+#           "#1E3F32", "#01646B", "#4f9b74", "#80C41C", "#1b918d", "#378CAF",
+#           "#468365", "#AECE53", "#87B0AB", "#AEC69C", "#819e90", "#B1B0B1",
+#           "#1E3F32", "#01646B", "#4f9b74", "#80C41C", "#1b918d", "#378CAF",
+#           "#468365", "#AECE53", "#87B0AB", "#AEC69C", "#819e90", "#B1B0B1"]
 
 # Set explicitly to get approx same order as last year.
 FACILITIES = [
@@ -195,13 +218,6 @@ if set(AFFILIATIONS) != all_affiliations:
 # print(sorted(all_affiliations))
 affiliation_pos = dict([(a, y) for y, a in enumerate(AFFILIATIONS)])
 
-# Cycle through the scale a few times...
-colors = ["#1E3F32", "#01646B", "#4f9b74", "#80C41C", "#1b918d", "#378CAF",
-          "#468365", "#AECE53", "#87B0AB", "#AEC69C", "#819e90", "#B1B0B1",
-          "#1E3F32", "#01646B", "#4f9b74", "#80C41C", "#1b918d", "#378CAF",
-          "#468365", "#AECE53", "#87B0AB", "#AEC69C", "#819e90", "#B1B0B1",
-          "#1E3F32", "#01646B", "#4f9b74", "#80C41C", "#1b918d", "#378CAF",
-          "#468365", "#AECE53", "#87B0AB", "#AEC69C", "#819e90", "#B1B0B1"]
 
 data = []
 for a, affiliation in enumerate(AFFILIATIONS):
