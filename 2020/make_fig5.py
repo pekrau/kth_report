@@ -12,27 +12,38 @@ import plotly.graph_objects as go
 
 import facility_data
 
-VERSION = "0.1"
+VERSION = "1"
 
 INPUTFILENAME = os.path.join(facility_data.BASEDIRPATH,
                              "figures",
                              "Analyses Users 2020 for fig 5.xlsx")
-OUTPUTFILENAME = os.path.join(facility_data.BASEDIRPATH, "figures", "fig_5.png")
+OUTPUTFILENAME = os.path.join(facility_data.BASEDIRPATH,
+                              "figures",
+                              "fig_5.png")
 
 
 # Browser
 # IMAGE = False
-# SCALE = 1.0
-# BROWSER_WIDTH = 1537              # Aspect ratio 1:1.8
-# BROWSER_HEIGHT = 850
 
 # PNG image file
 IMAGE = True
-SCALE = 5.0
-IMAGE_WIDTH = 7685              # Aspect ratio 1:1.8
-IMAGE_HEIGHT = 4250
+
+if IMAGE:
+    SCALE = 5.0
+    IMAGE_WIDTH = 7685          # Aspect ratio 1:1.8
+    IMAGE_HEIGHT = 4250
+    TITLE_Y = 0.99
+else:
+    SCALE = 1.0
+    BROWSER_WIDTH = 1537        # Aspect ratio 1:1.8
+    BROWSER_HEIGHT = 850
+    TITLE_Y = 0.95
+
 
 def get_marker_size(number):
+    # Scaling for year 2019
+    # return SCALE * (5 * math.sqrt(number) + 5)
+    # Scaling for year 2020; changed to avoid overlaps.
     return SCALE * (3 * math.sqrt(number) + 4)
 
 # Set explicitly to get approx same order as last year.
@@ -223,8 +234,10 @@ for a, affiliation in enumerate(AFFILIATIONS):
 fig = go.Figure(
     data=data,
     layout={
-        "title": "Spridning av tillhörighet för SciLifeLab-faciliteternas"
-                 f" användare 2020 (version {VERSION})",
+        "title": {"text": "Spridning av tillhörighet för SciLifeLab-"
+                  f"faciliteternas användare 2020 (version {VERSION})",
+                  "font": {"family": "Arial", "size": SCALE * 18},
+                  "y": TITLE_Y},
         "plot_bgcolor": "#fff",
         "showlegend": False,
         "xaxis": {
