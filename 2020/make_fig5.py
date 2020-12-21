@@ -11,6 +11,7 @@ import openpyxl
 import plotly.graph_objects as go
 
 import facility_data
+import scilifelab_brand_colors
 
 VERSION = "2"
 
@@ -46,21 +47,12 @@ def get_marker_size(number):
     """
     return SCALE * (5 * math.sqrt(number) + 5)
 
-# SciLifeLab brand colors, 50% and 75% tint (saturation)
-# Cycle through the scale a few times...
-colors = ["#D3E4A3", "#BDD775",  # Lime
-          "#82AEB2", "#43858B",  # Teal
-          "#A6CBCF", "#79B1B7",  # Aqua
-          "#A48FA9", "#77577E",  # Grape
-          "#A6A6A6", "#3F3F3F",  # Gray
-          "#D3E4A3", "#BDD775",   # Lime
-          "#82AEB2", "#43858B",  # Teal
-          "#A6CBCF", "#79B1B7",  # Aqua
-          "#A48FA9", "#77577E",  # Grape
-          "#A6A6A6", "#3F3F3F",  # Gray
-]
 
-# Colours from 2019 JavaScript code.
+# SciLifeLab brand colors, 50% and 75% tint (saturation)
+# The palette object allows cycling through the range of colors indefinitely.
+colors = scilifelab_brand_colors.medium_color_palette
+
+# Colors from 2019 JavaScript code.
 # Cycle through the scale a few times...
 # colors = ["#1E3F32", "#01646B", "#4f9b74", "#80C41C", "#1b918d", "#378CAF",
 #           "#468365", "#AECE53", "#87B0AB", "#AEC69C", "#819e90", "#B1B0B1",
