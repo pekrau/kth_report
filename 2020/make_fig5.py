@@ -149,7 +149,7 @@ AFFILIATIONS = [
     'Lunds universitet',
     'Naturhistoriska Riksmuséet',
     'Stockholms universitet',
-    'Svenska lantbruksuniversitetet',
+    'Sveriges lantbruksuniversitet',
     'Umeå universitet',
     'Göteborgs universitet',
     'Uppsala universitet', 
@@ -250,10 +250,6 @@ for a, affiliation in enumerate(AFFILIATIONS):
 fig = go.Figure(
     data=data,
     layout={
-        "title": {"text": "Spridning av tillhörighet för SciLifeLab-"
-                  f"faciliteternas användare 2020 (version {VERSION})",
-                  "font": {"family": "Arial", "size": SCALE * 18},
-                  "y": TITLE_Y},
         "plot_bgcolor": "#fff",
         "showlegend": False,
         "xaxis": {
