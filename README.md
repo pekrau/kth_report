@@ -21,7 +21,8 @@ The code for 2019 was written to recreate the merged files for that year.
 This code did not exist in this form when the actual reports were processed.
 See https://github.com/senthil10/dc_reporting_scripts instead.
 
-The source code for 2020 is new and used for production.
+The source code for 2020 is new and used for production. **NOTE** that the
+new source code does not use HTML or explicit JavaScript. It is pure Python.
 
 
 ## Facilities
@@ -34,14 +35,14 @@ The specifications for the output files A-H are given in the document
 
 ## Input files
 
-The Reporting Portal https://reportings.scilifelab.se/ is the primary
+The Reporting Portal https://reporting.scilifelab.se/ is the primary
 data source. The "Aggregate" feature is used to create XLSX files
 combining the data from the reports based on the relevant form.
 
 In addition, the Volume Data files attached to each report is also used.
 
 To perform the operations below, you need to be logged in as an admin
-or staff account at https://reportings.scilifelab.se/
+or staff account at https://reporting.scilifelab.se/
 
 
 ## Create the aggregate files
@@ -149,14 +150,14 @@ It is produced from the merged files (above) "by hand".
 
 ### Input files
 
-The Reporting Portal https://reportings.scilifelab.se/ is the primary
+The Reporting Portal https://reporting.scilifelab.se/ is the primary
 data source. The "Aggregate" feature is used to create XLSX files
 combining the data from the reports based on the relevant form.
 
 In addition, the Volume Data files attached to each report is also used.
 
 To perform the operations below, you need to be logged in as an admin
-or staff account at https://reportings.scilifelab.se/
+or staff account at https://reporting.scilifelab.se/
 
 
 ## Create the aggregate files
@@ -195,8 +196,8 @@ or staff account at https://reportings.scilifelab.se/
    the source code file `merge_fellows.py`.
 
 2. Run the script `merge_fellows.py`, which produces the files
-   `Fellows {year} Teaching.xlsx`, 'Fellows {year} Grants.xlsx'
-   and 'Fellows {year} Collaborations.xlsx' from the volume data files.
+   `Fellows {year} Teaching.xlsx`, `Fellows {year} Grants.xlsx`
+   and `Fellows {year} Collaborations.xlsx` from the volume data files.
 
    NOTE: Some of the `XLSX`/`XLSM` files cause "UserWarning" when read
    by `openpyxl`. This can be ignored.
