@@ -20,7 +20,7 @@ INPUTFILENAME = os.path.join(facility_data.BASEDIRPATH,
                              "Analyses Users 2020 for fig 5.xlsx")
 OUTPUTFILENAME = os.path.join(facility_data.BASEDIRPATH,
                               "figures",
-                              "fig_5_2020.png")
+                              "fig_5_english_2020.png")
 
 
 # Browser
@@ -52,8 +52,8 @@ def get_marker_size(number):
 # The palette object allows cycling through the range of colors indefinitely.
 colors = scilifelab_brand_colors.medium_color_palette
 
-XAXIS_TITLE = "Faciliteter"
-YAXIS_TITLE = "Användartillhörighet"
+XAXIS_TITLE = "Facilities"
+YAXIS_TITLE = "User affiliation"
 
 # Set explicitly to get approx same order as last year.
 FACILITIES = [
@@ -111,6 +111,26 @@ AFFILIATIONS = [
     'Hälso- och sjukvård', 
     'Industri',
 ]
+ENGLISH_AFFILIATIONS = [
+    'Chalmers',
+    'KTH', 
+    'Karolinska Institute',
+    'Linköping University',
+    'Lund University',
+    'Museum of Natural History',
+    'Stockholm University',
+    'Swedish University of Agricultural Sciences',
+    'Umeå University',
+    'Gothenburg University',
+    'Uppsala University', 
+    'Other Swedish academia', 
+    'Other Swedish organisations',
+    'International universities',
+    'Other international organisations',
+    'Healthcare', 
+    'Industry',
+]
+
 wb = openpyxl.load_workbook(INPUTFILENAME)
 ws = wb.active
 rows = list(ws)
@@ -198,7 +218,7 @@ fig = go.Figure(
                       "font": {"family": "Arial", "size": SCALE * 18}},
             "gridcolor": "#eeeeee",
             "tickvals": list(range(1, len(AFFILIATIONS) + 1)),
-            "ticktext": AFFILIATIONS,
+            "ticktext": ENGLISH_AFFILIATIONS,
             "tickfont": {"family": "Arial", "size": SCALE * 16},
             "tickangle": -40,
             "zerolinecolor": "#6E6E6E",
