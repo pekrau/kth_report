@@ -1,7 +1,7 @@
 # kth_report
 
 Produce merged files and plots for the yearly SciLifeLab report to KTH.
-For both facility and fellows data.
+For both unit (facility) and fellows data.
 
 
 ## Code requirements
@@ -17,15 +17,24 @@ For both facility and fellows data.
 
 The source code for each year is in its own subdirectory.
 
+### 2021
+
+The source code for 2021 is a copy of 2020 and is used for production.
+
+### 2020
+
+The source code for 2020 is new and is used for production.
+**NOTE** that the new source code does not use HTML or explicit
+JavaScript. It is pure Python.
+
+### 2019
+
 The code for 2019 was written to recreate the merged files for that year.
 This code did not exist in this form when the actual reports were processed.
 See https://github.com/senthil10/dc_reporting_scripts instead.
 
-The source code for 2020 is new and used for production. **NOTE** that the
-new source code does not use HTML or explicit JavaScript. It is pure Python.
 
-
-## Facilities
+## Units (Facilities)
 
 ### Specifications
 
@@ -42,12 +51,14 @@ combining the data from the reports based on the relevant form.
 In addition, the Volume Data files attached to each report is also used.
 
 To perform the operations below, you need to be logged in as an admin
-or staff account at https://reporting.scilifelab.se/
+or staff account at `https://reporting.scilifelab.se/`
 
+My location for the input files are `~/Nextcloud/Årsrapport 2021/`
 
 ## Create the aggregate files
 
-1. Go to the form for this year's Facility reports in the Reporting Portal.
+1. Go to the form for this year's Unit (Facility) reports in the
+   Reporting Portal.
 
 2. Click on the button "Aggregate".
 
@@ -73,7 +84,7 @@ or staff account at https://reporting.scilifelab.se/
 
 ### Download the Volume data files
 
-1. Go to the list of all reports.
+1. Go to the page listing all reports.
 
 2. Filter by the appropriate form, and the status "Submitted".
 
@@ -86,7 +97,7 @@ or staff account at https://reporting.scilifelab.se/
 1. Check and set the parameters for the filepaths and other data in
    the source code file `facility_data.py`.
 
-2. The script `merge_A.py` produces the file
+2. The script `merge_A.py` produces the file XXX HERE
    `A_Infrastructure Single Data Reported {year}.xlsx` from the
    contents of file `orders_Facility_report_{year}.xlsx`.
 
