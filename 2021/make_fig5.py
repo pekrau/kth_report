@@ -4,6 +4,7 @@ of affiliations of the users of the SciLifeLab infrastructure units.
 "Spridning av tillhörighet för SciLifeLab-enheternas användare"
 """
 
+import csv
 import math
 import os.path
 
@@ -19,7 +20,7 @@ INPUTFILENAME = os.path.join(facility_data.BASEDIRPATH,
                              "E_Infrastructure Users 2021.xlsx")
 OUTPUTFILENAME = os.path.join(facility_data.BASEDIRPATH,
                               "figures",
-                              "fig_5_2021.png")
+                              "fig_5_2021")
 
 
 # Browser
@@ -197,8 +198,21 @@ fig = go.Figure(
         },
     })
 
+with open(OUTPUTFILENAME + ".csv", "w") as outfile:
+    writer = csv.writer(outfile)
+    writer.writerow(["Infrastructure Unit"] + AFFILIATIONS)
+    for facility in FACILITIES:
+        row = [facility]
+        for affiliation in AFFILIATIONS:
+            try:
+                row.append(counts[facility][affiliation])
+            except KeyError:
+                row.append(0)
+        writer.writerow(row)
+
+
 if IMAGE:
-    fig.write_image(OUTPUTFILENAME,
+    fig.write_image(OUTPUTFILENAME + ".png",
                     width=IMAGE_WIDTH,
                     height=IMAGE_HEIGHT)
 else:

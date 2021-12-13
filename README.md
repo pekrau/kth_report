@@ -146,7 +146,7 @@ My location for the input files are `~/Nextcloud/Årsrapport 2021/`
    by `openpyxl`. This can be ignored.
 
 
-### Create the plot named "Figure 5" (affiliations of users of facilities)
+### Create the plot named "Figure 5" (Affiliations of users of SciLifeLab units)
 
 The Python script `make_fig5.py` uses the Python library of Plotly and
 a few other packages to produce a large PNG file of a scatterplot of
@@ -155,6 +155,8 @@ the number of unique users.
 
 The input file is that produced by the script `merge_E.py` (step 6 above).
 (This is an improvement from 2020; no manual cut-and-paste is required now.)
+
+This script also creates a CSV file containing the counts.
 
 
 ## Fellows
