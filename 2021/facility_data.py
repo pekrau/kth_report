@@ -15,8 +15,8 @@ import unicodedata
 
 import openpyxl
 
-BASEDIRPATH = os.path.expanduser("~/Nextcloud/Årsrapport 2021/Unit reports")
-BASEFILENAME = "orders_Units_report_2021"
+BASEDIRPATH = os.path.expanduser("~/Nextcloud/Årsrapport 2021/Units reports")
+BASEFILENAME = f"orders_Infrastructure_Unit_report_2021"
 
 ### Path to directory containing the downloaded aggregate files.
 DIRPATH = os.path.join(BASEDIRPATH, "aggregate_files")
@@ -220,3 +220,9 @@ if __name__ == "__main__":
     platforms = sorted(set(PLATFORM_LOOKUP.values()))
     for platform in platforms:
         print(platform)
+
+    parts = REPORT_FILEPATH.split("/")
+    for pos, part in enumerate(parts):
+        path = "/".join(parts[:pos])
+        if not os.path.exists(path):
+            print(path)

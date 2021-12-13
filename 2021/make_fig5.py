@@ -1,7 +1,7 @@
-"""Create the figure 5 in the 2019 report, showing the spread of affiliations
-of the users of the SciLifeLab facilities.
+"""Create the figure 5 (the number in the 2019 report), showing the spread 
+of affiliations of the users of the SciLifeLab infrastructure units.
 
-"Spridning av tillhörighet för SciLifeLAb-faciliteternas användare"
+"Spridning av tillhörighet för SciLifeLab-enheternas användare"
 """
 
 import math
@@ -13,18 +13,17 @@ import plotly.graph_objects as go
 import facility_data
 import scilifelab_brand_colors
 
-VERSION = "2"
 
 INPUTFILENAME = os.path.join(facility_data.BASEDIRPATH,
-                             "figures",
-                             "Analyses Users 2020 for fig 5.xlsx")
+                             "merged_files",
+                             "E_Infrastructure Users 2021.xlsx")
 OUTPUTFILENAME = os.path.join(facility_data.BASEDIRPATH,
                               "figures",
-                              "fig_5_2020.png")
+                              "fig_5_2021.png")
 
 
 # Browser
-# IMAGE = False
+### IMAGE = False
 
 # PNG image file
 IMAGE = True
@@ -61,126 +60,56 @@ colors = scilifelab_brand_colors.medium_color_palette
 #           "#1E3F32", "#01646B", "#4f9b74", "#80C41C", "#1b918d", "#378CAF",
 #           "#468365", "#AECE53", "#87B0AB", "#AEC69C", "#819e90", "#B1B0B1"]
 
-# Set explicitly to get approx same order as last year.
-FACILITIES = [
-    'Long-term Support (WABI)',
-    'Support and Infrastructure',
-    'Systems Biology',
-    'Advanced Light Microscopy (ALM)',
-    'BioImage Informatics',
-    'Cell Profiling', 
-    'Cryo-EM',
-    'Swedish NMR Centre',
-    'Chemical Biology Consortium Sweden (KI)',
-    'Chemical Biology Consortium Sweden (UmU)',
-    'Genome Engineering Zebrafish',
-    'High Throughput Genome Engineering',
-    'In Situ Sequencing',
-    'Clinical Genomics Gothenburg',
-    'Clinical Genomics Linköping',
-    'Clinical Genomics Lund',
-    'Clinical Genomics Stockholm', 
-    'Clinical Genomics Umeå', 
-    'Clinical Genomics Uppsala',
-    'Clinical Genomics Örebro',
-    'Drug Discovery and Development', 
-    'Ancient DNA',
-    'National Genomics Infrastructure',
-    'Autoimmunity Profiling',
-    'Chemical Proteomics and Proteogenomics (MBB)',
-    'Chemical Proteomics and Proteogenomics (OncPat)',
-    'PLA and Single Cell Proteomics',
-    'Plasma Profiling',
-    'Swedish Metabolomics Centre',
-    'Eukaryotic Single Cell Genomics',
-    'Mass Cytometry (KI)',
-    'Mass Cytometry (LiU)',
-    'Microbial Single Cell Genomics',
-]
-# FACILITIES = [
-#     'Advanced Light Microscopy (ALM)',
-#     'Ancient DNA',
-#     'Autoimmunity Profiling',
-#     'BioImage Informatics',
-#     'Cell Profiling', 
-#     'Chemical Biology Consortium Sweden (KI)',
-#     'Chemical Biology Consortium Sweden (UmU)',
-#     'Chemical Proteomics and Proteogenomics (MBB)',
-#     'Chemical Proteomics and Proteogenomics (OncPat)',
-#     'Clinical Genomics Gothenburg',
-#     'Clinical Genomics Linköping',
-#     'Clinical Genomics Lund',
-#     'Clinical Genomics Stockholm', 
-#     'Clinical Genomics Umeå', 
-#     'Clinical Genomics Uppsala',
-#     'Clinical Genomics Örebro',
-#     'Cryo-EM',
-#     'Drug Discovery and Development', 
-#     'Eukaryotic Single Cell Genomics',
-#     'Genome Engineering Zebrafish',
-#     'High Throughput Genome Engineering',
-#     'In Situ Sequencing',
-#     'Long-term Support (WABI)',
-#     'Mass Cytometry (KI)',
-#     'Mass Cytometry (LiU)',
-#     'Microbial Single Cell Genomics',
-#     'National Genomics Infrastructure',
-#     'PLA and Single Cell Proteomics',
-#     'Plasma Profiling',
-#     'Support and Infrastructure',
-#     'Swedish Metabolomics Centre',
-#     'Swedish NMR Centre',
-#     'Systems Biology',
-# ]
+# Alphabetical order. Forget about trying to keep approximately the
+# same order as last year; too many changes.
+FACILITIES = sorted(facility_data.PLATFORM_LOOKUP.keys())
 
+# Affiliation in English this year, apparently.
 AFFILIATIONS = [
-    'Chalmers',
-    'KTH', 
-    'Karolinska Institutet',
-    'Linköpings universitet',
-    'Lunds universitet',
-    'Naturhistoriska Riksmuséet',
-    'Stockholms universitet',
-    'Sveriges lantbruksuniversitet',
-    'Umeå universitet',
-    'Göteborgs universitet',
-    'Uppsala universitet', 
-    'Andra svenska lärosäten', 
-    'Andra svenska organisationer',
-    'Internationella universitet',
-    'Andra internationella organisationer',
-    'Hälso- och sjukvård', 
-    'Industri',
+    "Chalmers University of Technology",
+    "Karolinska Institutet",
+    "KTH Royal Institute of Technology",
+    "Linköping University",
+    "Lund University",
+    "Stockholm University",
+    "Swedish University of Agricultural Sciences",
+    "Umeå University",
+    "University of Gothenburg",
+    "Uppsala University",
+    "Örebro University",
+    "Other Swedish University",
+    "International University",
+    "Healthcare",
+    "Industry",
+    "Naturhistoriska Riksmuséet",
+    "Other Swedish organization",
+    "Other international organization",
 ]
-# AFFILIATIONS = [
-#     'Andra internationella organisationer',
-#     'Andra svenska lärosäten', 
-#     'Andra svenska organisationer',
-#     'Chalmers',
-#     'Göteborgs universitet',
-#     'Hälso- och sjukvård', 
-#     'Industri',
-#     'Internationella universitet',
-#     'KTH', 
-#     'Karolinska Institutet',
-#     'Linköpings universitet',
-#     'Lunds universitet',
-#     'Naturhistoriska Riksmuséet',
-#     'Stockholms universitet',
-#     'Svenska lantbruksuniversitetet',
-#     'Umeå universitet',
-#     'Uppsala universitet', 
-# ]
 
 wb = openpyxl.load_workbook(INPUTFILENAME)
 ws = wb.active
 rows = list(ws)
 # Skip first row; header
 rows = rows[1:]
-headers = ["facility", "platform",
-           "pi_first_name", "pi_last_name", "pi_email",
-           "affiliation", "affiliation_other"]
-records = [dict(zip(headers, [c.value for c in row])) for row in rows]
+records = []
+# Read off column positions manually from file.
+FACILITY_COL = 0
+PI_COL = 5
+AFFILIATION_COL = 6
+for row in rows:
+    values = [c.value for c in row]
+    affiliation = values[AFFILIATION_COL]
+    # No affiliation specified: skip (or correct in the input file).
+    if not affiliation:
+        print("No affiliation for", values[FACILITY_COL], values[PI_COL])
+        continue
+    # A trailing blank in the input XLSX pull-down menu; remove it.
+    affiliation = affiliation.strip()
+    # Some value are lower-case first character?!
+    affiliation = affiliation[0].upper() + affiliation[1:]
+    records.append(dict(facility=values[FACILITY_COL],
+                        pi=values[PI_COL],
+                        affiliation=affiliation))
 print(len(records), "records in file")
 wb.close()
 
@@ -195,18 +124,20 @@ for record in records:
 # Sanity check: The hardwired facilities matches the input.
 all_facilities = counts.keys()
 if set(FACILITIES) != set(all_facilities):
-    raise ValueError("Hardwired facilities do not match input:",
-                     set(FACILITIES).difference(all_facilities),
-                     set(all_facilities).difference(FACILITIES))
-# print(sorted(all_facilities))
+    print(sorted(set(FACILITIES).difference(all_facilities)),
+          "\n\n",
+          sorted(set(all_facilities).difference(FACILITIES)))
+    raise ValueError("Hardwired facilities do not match input")
+
 # Sanity check: The hardwired affiliations matches the input.
 all_affiliations = set()
 for facility, affiliations in counts.items():
     all_affiliations.update(affiliations)
 if set(AFFILIATIONS) != all_affiliations:
-    raise ValueError("Hardwired affiliations do not match input:",
-                     set(AFFILIATIONS).difference(all_affiliations),
-                     set(all_affiliations).difference(AFFILIATIONS))
+    print(set(AFFILIATIONS).difference(all_affiliations),
+          "\n\n",
+          set(all_affiliations).difference(AFFILIATIONS))
+    raise ValueError("Hardwired affiliations do not match input")
 # print(sorted(all_affiliations))
 affiliation_pos = dict([(a, y) for y, a in enumerate(AFFILIATIONS)])
 
@@ -245,7 +176,7 @@ fig = go.Figure(
         "plot_bgcolor": "#fff",
         "showlegend": False,
         "xaxis": {
-            "title": {"text": "Faciliteter",
+            "title": {"text": "Infrastrukturenheter",
                       "font": {"family": "Arial", "size": SCALE * 18}},
             "range": [0, len(FACILITIES) + 1],
             "gridcolor": "#eeeeee",

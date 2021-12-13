@@ -1,6 +1,6 @@
-"""Facility Reports 2020.
+"""Infrastructure Units Reports 2021.
 
-Create the file 'C_Infrastructure Other Funding 2020.xlsx'
+Create the file 'C_Infrastructure Other Funding 2021.xlsx'
 
 Identical (except for year) to the code for 2019.
 """
@@ -15,7 +15,7 @@ import facility_data
 DIRPATH = os.path.join(facility_data.BASEDIRPATH, "merged_files")
 
 ### Standard full file name for the C file.
-FILENAME = "C_Infrastructure Other Funding 2020.xlsx"
+FILENAME = "C_Infrastructure Other Funding 2021.xlsx"
 
 
 def merge_C(filepath):

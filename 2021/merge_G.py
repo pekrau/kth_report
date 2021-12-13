@@ -1,6 +1,6 @@
-"""Facility Reports 2020.
+"""Infrastructure Units Reports 2021.
 
-Create the file 'G_Infrastructure Conferences Symposia Seminars 2020.xlsx'
+Create the file 'G_Infrastructure Conferences Symposia Seminars 2021.xlsx'
 """
 
 import datetime
@@ -15,7 +15,7 @@ import facility_data
 DIRPATH = os.path.join(facility_data.BASEDIRPATH, "merged_files")
 
 ### Full file name for the G file.
-FILENAME = "G_Infrastructure Conferences Symposia Seminars 2020.xlsx"
+FILENAME = "G_Infrastructure Conferences Symposia Seminars 2021.xlsx"
 
 
 def merge_G(filepath):

@@ -1,6 +1,6 @@
-"""Facility Reports 2020.
+"""Infrastructure Units Reports 2021.
 
-Create the file 'A_Infrastructure Single Data Reported 2020.xlsx'
+Create the file 'A_Infrastructure Single Data Reported 2021.xlsx'
 
 This code has added a few fields for Covid-19 related information
 compared to 2019. Otherwise it is identical.
@@ -16,7 +16,7 @@ import facility_data
 DIRPATH = os.path.join(facility_data.BASEDIRPATH, "merged_files")
 
 ### Standard full file name for the A file.
-FILENAME = "A_Infrastructure Single Data Reported 2020.xlsx"
+FILENAME = "A_Infrastructure Single Data Reported 2021.xlsx"
 
 # List of single-valued field identifiers to collect from the aggregate file.
 # Cut-and-paste from file 'Data files for KTH and Infra Reports.xlsx'.

@@ -1,6 +1,6 @@
-"""Facility Reports 2020.
+"""Infrastructure Units Reports 2021.
 
-Create the file 'B_Infrastructure FD and HF 2020.xlsx'
+Create the file 'B_Infrastructure FD and HF 2021.xlsx'
 
 Added the percentage of salary columns. Otherwise identical to the
 code for 2019.
@@ -16,7 +16,7 @@ import facility_data
 DIRPATH = os.path.join(facility_data.BASEDIRPATH, "merged_files")
 
 ### Standard full file name for the B file.
-FILENAME = "B_Infrastructure FD and HF 2020.xlsx"
+FILENAME = "B_Infrastructure FD and HF 2021.xlsx"
 
 
 def merge_B(filepath):

@@ -57,8 +57,8 @@ My location for the input files are `~/Nextcloud/Årsrapport 2021/`
 
 ## Create the aggregate files
 
-1. Go to the form for this year's Unit (Facility) reports in the
-   Reporting Portal.
+1. Go to the form for this year's Infrastructure Unit (Facility)
+   reports in the Reporting Portal.
 
 2. Click on the button "Aggregate".
 
@@ -97,7 +97,7 @@ My location for the input files are `~/Nextcloud/Årsrapport 2021/`
 1. Check and set the parameters for the filepaths and other data in
    the source code file `facility_data.py`.
 
-2. The script `merge_A.py` produces the file XXX HERE
+2. The script `merge_A.py` produces the file
    `A_Infrastructure Single Data Reported {year}.xlsx` from the
    contents of file `orders_Facility_report_{year}.xlsx`.
 
@@ -153,8 +153,8 @@ a few other packages to produce a large PNG file of a scatterplot of
 affiliations versus facilities, where the size of each circle shows
 the number of unique users.
 
-The input file is an Excel file with columns as documented in the code.
-It is produced from the merged files (above) "by hand".
+The input file is that produced by the script `merge_E.py` (step 6 above).
+(This is an improvement from 2020; no manual cut-and-paste is required now.)
 
 
 ## Fellows
