@@ -189,7 +189,7 @@ or staff account at https://reporting.scilifelab.se/
 
 4. Create and download the aggregate file by clicking the button "Aggregate".
 
-5. Move these XLSX files to the subdirectory `aggregate_files` for
+5. Move these XLSX file to the subdirectory `aggregate_files` for
    this year's report data.
 
 
