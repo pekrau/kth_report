@@ -1,5 +1,5 @@
 """Merge the Volume Data files for Fellows reporting.
-Per Kraulis 2020-09-23, 2020-12-03
+Per Kraulis 2020-09-23, 2020-12-03, 2021-12-15
 """
 
 import fnmatch
@@ -10,8 +10,8 @@ import sys
 import openpyxl
 import xlsxwriter
 
-INPUT_DIRPATH = os.path.expanduser('~/Nextcloud/Årsrapport 2020/Fellows reports/volume_data_files')
-OUTPUT_DIRPATH = os.path.expanduser('~/Nextcloud/Årsrapport 2020/Fellows reports/merged_files')
+INPUT_DIRPATH = os.path.expanduser('~/Nextcloud/Årsrapport 2021/Fellows reports/volume_data_files')
+OUTPUT_DIRPATH = os.path.expanduser('~/Nextcloud/Årsrapport 2021/Fellows reports/merged_files')
 
 teaching = []
 teaching_header = None
@@ -19,21 +19,21 @@ TEACHING = '2. Teaching'
 TEACHING_HEADER = '1. Name of activity*'
 TEACHING_COLS = 11
 TEACHING_DATE_COLS = (7, 8)     # After swapping name first
-TEACHING_OUTPUT_NAME = 'Fellows 2020 Teaching.xlsx'
+TEACHING_OUTPUT_NAME = 'Fellows 2021 Teaching.xlsx'
 
 grants = []
 grants_header = None
 GRANTS = '4. Grants'
 GRANTS_HEADER = '1. Name of grant*'
 GRANTS_COLS = 7
-GRANTS_OUTPUT_NAME = 'Fellows 2020 Grants.xlsx'
+GRANTS_OUTPUT_NAME = 'Fellows 2021 Grants.xlsx'
 
 collaborations = []
 collaborations_header = None
 COLLABORATIONS = '5. Collaborations'
 COLLABORATIONS_HEADER = '1. Name of organization*'
 COLLABORATIONS_COLS = 8
-COLLABORATIONS_OUTPUT_NAME = 'Fellows 2020 Collaborations.xlsx'
+COLLABORATIONS_OUTPUT_NAME = 'Fellows 2021 Collaborations.xlsx'
 
 count = 0
 for filename in os.listdir(INPUT_DIRPATH):
