@@ -46,6 +46,7 @@ cost_instrument
 cost_salaries
 cost_rents
 cost_other
+scilifelab_instrument_funding
 number_projects
 number_projects_covid19
 fte_covid19
@@ -85,6 +86,7 @@ COLUMN_HEADERS = ["Facility",
                   "Cost salaries",
                   "Cost rents",
                   "Cost other",
+                  "Instrument funding",
                   "# Projects",
                   "# Covid-19 projects",
                   "# Covid-19 FTE resources",
