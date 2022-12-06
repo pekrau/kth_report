@@ -124,8 +124,6 @@ My location for the input files are `~/Nextcloud/Årsrapport 2022/`
    contents of the file
    `orders_Facility_report_{year}_immaterial_property_rights.xlsx`.
 
-XXX Redo from here when correct file from Clinical Genomics Stockholm. ----------------
-
 6. The script `merge_E.py` produces the file
    `E_Infrastructure Users {year}.xlsx` from the contents of the
    sheet `A. Users` in all the volume data files.
