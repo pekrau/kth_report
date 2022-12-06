@@ -1,0 +1,105 @@
+{
+  "title": "SciLifeLab brand colors",
+  "colors": {
+    "lime": "#A7C947",
+    "teal": "#045C64",
+    "aqua": "#4C979F",
+    "grape": "#491F53"
+  },
+  "grays": {
+    "lightgray": "#E5E5E5",
+    "mediumgray": "#A6A6A6",
+    "darkgray": "#3F3F3F"
+  },
+  "tints": {
+    "lime": {
+      "25": "#E9F2D1",
+      "50": "#D3E4A3",
+      "75": "#BDD775",
+      "100": "#A7C947"
+    },
+    "teal": {
+      "25": "#C0D6D8",
+      "50": "#82AEB2",
+      "75": "#43858B",
+      "100": "#045C64"
+    },
+    "aqua": {
+      "25": "#D2E5E7",
+      "50": "#A6CBCF",
+      "75": "#79B1B7",
+      "100": "#4C979F"
+    },
+    "grape": {
+      "25": "#D2C7D4",
+      "50": "#A48FA9",
+      "75": "#77577E",
+      "100": "#491F53"
+    }
+  },
+  "base_colors": [
+    "#A7C947",
+    "#045C64",
+    "#4C979F",
+    "#491F53",
+    "#3F3F3F"
+  ],
+  "medium_colors": [
+    "#D3E4A3",
+    "#BDD775",
+    "#82AEB2",
+    "#43858B",
+    "#A6CBCF",
+    "#79B1B7",
+    "#A48FA9",
+    "#77577E",
+    "#A6A6A6",
+    "#3F3F3F"
+  ],
+  "all_colors": [
+    "#E9F2D1",
+    "#D3E4A3",
+    "#BDD775",
+    "#A7C947",
+    "#C0D6D8",
+    "#82AEB2",
+    "#43858B",
+    "#045C64",
+    "#D2E5E7",
+    "#A6CBCF",
+    "#79B1B7",
+    "#4C979F",
+    "#D2C7D4",
+    "#A48FA9",
+    "#77577E",
+    "#491F53",
+    "#E5E5E5",
+    "#A6A6A6",
+    "#3F3F3F"
+  ],
+  "lookup": {
+    "lime": "#A7C947",
+    "teal": "#045C64",
+    "aqua": "#4C979F",
+    "grape": "#491F53",
+    "lightgray": "#E5E5E5",
+    "mediumgray": "#A6A6A6",
+    "darkgray": "#3F3F3F",
+    "lime25": "#E9F2D1",
+    "lime50": "#D3E4A3",
+    "lime75": "#BDD775",
+    "lime100": "#A7C947",
+    "teal25": "#C0D6D8",
+    "teal50": "#82AEB2",
+    "teal75": "#43858B",
+    "teal100": "#045C64",
+    "aqua25": "#D2E5E7",
+    "aqua50": "#A6CBCF",
+    "aqua75": "#79B1B7",
+    "aqua100": "#4C979F",
+    "grape25": "#D2C7D4",
+    "grape50": "#A48FA9",
+    "grape75": "#77577E",
+    "grape100": "#491F53"
+  }
+}

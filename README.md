@@ -12,10 +12,19 @@ For both unit (facility) and fellows data.
 - Plotly Python package (create plots)
 - kaleido Python package (create PNG of plots)
 
+Tip: Create a virtual Python environment and install the packages using pip:
+
+    $ pip install -r requirements.txt
+
 
 ## Source code organisation
 
 The source code for each year is in its own subdirectory.
+
+### 2022
+
+The source code for 2022 is a copy of 2021 and is used for production.
+
 
 ### 2021
 
@@ -53,7 +62,7 @@ In addition, the Volume Data files attached to each report is also used.
 To perform the operations below, you need to be logged in as an admin
 or staff account at `https://reporting.scilifelab.se/`
 
-My location for the input files are `~/Nextcloud/Årsrapport 2021/`
+My location for the input files are `~/Nextcloud/Årsrapport 2022/`
 
 ## Create the aggregate files
 
@@ -74,11 +83,11 @@ My location for the input files are `~/Nextcloud/Årsrapport 2021/`
 4. Create and download the aggregate file by clicking the button "Aggregate".
 
 5. Check *only* the "facility" value in the **Report fields**, and then
-   perform an aggregate operation for *each value* of **Table field**;
+   perform one aggregate operation for *each value* of **Table field**;
    "facility_director", "facility_head", "additional_funding" and
    "immaterial_property_rights".
 
-6. Move these XLSX files to the subdirectory `aggregate_files` for
+6. Move these XLSX files to the subdirectory `Units reports/aggregate_files` for
    this year's report data.
 
 
@@ -86,7 +95,7 @@ My location for the input files are `~/Nextcloud/Årsrapport 2021/`
 
 1. Go to the page listing all reports.
 
-2. Filter by the appropriate form, and the status "Submitted".
+2. Filter by the appropriate form and status "Submitted".
 
 3. Download manually the volume data files for all reports to the
    subdirectory `volume_data_files` for this year's report data.
@@ -114,6 +123,8 @@ My location for the input files are `~/Nextcloud/Årsrapport 2021/`
    `D_Infrastructure Immaterial Property Rights {year}.xlsx` from the
    contents of the file
    `orders_Facility_report_{year}_immaterial_property_rights.xlsx`.
+
+XXX Redo from here when correct file from Clinical Genomics Stockholm. ----------------
 
 6. The script `merge_E.py` produces the file
    `E_Infrastructure Users {year}.xlsx` from the contents of the
@@ -159,7 +170,7 @@ The input file is that produced by the script `merge_E.py` (step 6 above).
 This script also creates a CSV file containing the counts.
 
 
-## Fellows
+## SciLifeLab Fellows
 
 ### Input files
 
@@ -173,9 +184,9 @@ To perform the operations below, you need to be logged in as an admin
 or staff account at https://reporting.scilifelab.se/
 
 
-## Create the aggregate files
+## Create the aggregate file.
 
-1. Go to the form for this year's Fellow reports in the Reporting Portal.
+1. Go to the form for this year's SciLifeLab Fellow reports in the Reporting Portal.
 
 2. Click on the button "Aggregate".
 
@@ -189,7 +200,7 @@ or staff account at https://reporting.scilifelab.se/
 
 4. Create and download the aggregate file by clicking the button "Aggregate".
 
-5. Move these XLSX file to the subdirectory `aggregate_files` for
+5. Move this XLSX file to the subdirectory `aggregate_files` for
    this year's report data.
 
 
@@ -206,12 +217,70 @@ or staff account at https://reporting.scilifelab.se/
 ### Create the merged files
 
 1. Check and set the parameters for the filepaths and other data in
-   the source code file `merge_fellows.py`.
+   the source code file `merge_scilifelab_fellows.py`.
 
-2. Run the script `merge_fellows.py`, which produces the files
+2. Run the script `merge_scilifelab_fellows.py`, which produces the files
    `Fellows {year} Teaching.xlsx`, `Fellows {year} Grants.xlsx`
    and `Fellows {year} Collaborations.xlsx` from the volume data files.
 
    NOTE: Some of the `XLSX`/`XLSM` files cause "UserWarning" when read
    by `openpyxl`. This can be ignored.
 
+
+## DDLS Fellows
+
+This procedure was copied 2022 from the SciLifeLab Fellows above.
+
+### Input files
+
+The Reporting Portal https://reporting.scilifelab.se/ is the primary
+data source. The "Aggregate" feature is used to create XLSX files
+combining the data from the reports based on the relevant form.
+
+In addition, the Volume Data files attached to each report is also used.
+
+To perform the operations below, you need to be logged in as an admin
+or staff account at https://reporting.scilifelab.se/
+
+
+## Create the aggregate file.
+
+1. Go to the form for this year's DDLS Fellow reports in the Reporting Portal.
+
+2. Click on the button "Aggregate".
+
+3. Check the following fields for output.
+   - **Report status filter**: Submitted
+   - **Report metadata**: identifier, title
+   - **Report history**: [none]
+   - **Report owner**: [all]
+   - **Report fields**: [all except volume_data]
+   - **File format**: Excel (XLSX)
+
+4. Create and download the aggregate file by clicking the button "Aggregate".
+
+5. Move this XLSX file to the subdirectory `aggregate_files` for
+   this year's report data.
+
+
+### Download the Volume data files
+
+1. Go to the list of all reports.
+
+2. Filter by the appropriate form, and the status "Submitted".
+
+3. Download manually the volume data files for all reports to the
+   subdirectory `volume_data_files` for this year's report data.
+
+
+### Create the merged files
+
+1. Check and set the parameters for the filepaths and other data in
+   the source code file `merge_ddls_fellows.py`.
+
+2. Run the script `merge_ddls_fellows.py`, which produces the files
+   `DDLS Fellows {year} Teaching.xlsx`, `DDLS Fellows {year} Grants.xlsx`
+   and `DDLS Fellows {year} Collaborations.xlsx` from the volume data files.
+
+   NOTE: Some of the `XLSX`/`XLSM` files cause "UserWarning" when read
+   by `openpyxl`. This can be ignored.
