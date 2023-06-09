@@ -102,11 +102,11 @@ My location for the input files are `~/Nextcloud/Årsrapport 2022/`
 3. Download manually the volume data files for all reports to the
    subdirectory `volume_data_files` for this year's report data.
 
-  1. Right-click on the report link, to bring up a new tab (keeping
-     the list as is in its tab).
-  2. Click on the link to the Volume Data file; it is visible under "Files" in the
-     top panel, and also further down in the field "Volume data by Excel..."
-     It is the same file.
+   1. Right-click on the report link, to bring up a new tab (keeping
+      the list as is in its tab).
+   2. Click on the link to the Volume Data file; it is visible under "Files" in the
+      top panel, and also further down in the field "Volume data by Excel..."
+      It is the same file.
 
 
 ### Create the merged files
@@ -221,11 +221,11 @@ or staff account at https://reporting.scilifelab.se/
 3. Download manually the volume data files for all reports to the
    subdirectory `volume_data_files` for this year's report data.
 
-  1. Right-click on the report link, to bring up a new tab (keeping
-     the list as is in its tab).
-  2. Click on the link to the Volume Data file; it is visible under "Files" in the
-     top panel, and also further down in the field "Volume data by Excel..."
-     It is the same file.
+   1. Right-click on the report link, to bring up a new tab (keeping
+      the list as is in its tab).
+   2. Click on the link to the Volume Data file; it is visible under "Files" in the
+      top panel, and also further down in the field "Volume data by Excel..."
+      It is the same file.
 
 
 ### Create the merged files
