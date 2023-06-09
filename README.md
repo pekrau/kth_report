@@ -12,7 +12,8 @@ For both unit (facility) and fellows data.
 - Plotly Python package (create plots)
 - kaleido Python package (create PNG of plots)
 
-Tip: Create a virtual Python environment and install the packages using pip:
+Tip: Create a virtual Python environment and install the packages using pip
+and the `requirements.txt` file which can be found in the source code for each year:
 
     $ pip install -r requirements.txt
 
@@ -23,12 +24,12 @@ The source code for each year is in its own subdirectory.
 
 ### 2022
 
-The source code for 2022 is a copy of 2021 and is used for production.
+The source code for 2022 is an adjusted copy of 2021 and is used for production.
 
 
 ### 2021
 
-The source code for 2021 is a copy of 2020 and is used for production.
+The source code for 2021 is an adjusted copy of 2020 and is used for production.
 
 ### 2020
 
@@ -93,18 +94,26 @@ My location for the input files are `~/Nextcloud/Årsrapport 2022/`
 
 ### Download the Volume data files
 
-1. Go to the page listing all reports.
+1. Go to the page listing all reports
+   [https://reporting.scilifelab.se/orders](https://reporting.scilifelab.se/orders)
 
 2. Filter by the appropriate form and status "Submitted".
 
 3. Download manually the volume data files for all reports to the
    subdirectory `volume_data_files` for this year's report data.
 
+  1. Right-click on the report link, to bring up a new tab (keeping
+     the list as is in its tab).
+  2. Click on the link to the Volume Data file; it is visible under "Files" in the
+     top panel, and also further down in the field "Volume data by Excel..."
+     It is the same file.
+
 
 ### Create the merged files
 
 1. Check and set the parameters for the filepaths and other data in
-   the source code file `facility_data.py`.
+   the source code file `facility_data.py`. This file is imported as a module
+   by the other scripts and its variables are used there.
 
 2. The script `merge_A.py` produces the file
    `A_Infrastructure Single Data Reported {year}.xlsx` from the
@@ -204,18 +213,27 @@ or staff account at https://reporting.scilifelab.se/
 
 ### Download the Volume data files
 
-1. Go to the list of all reports.
+1. Go to the list of all reports
+   [https://reporting.scilifelab.se/orders](https://reporting.scilifelab.se/orders)
 
 2. Filter by the appropriate form, and the status "Submitted".
 
 3. Download manually the volume data files for all reports to the
    subdirectory `volume_data_files` for this year's report data.
 
+  1. Right-click on the report link, to bring up a new tab (keeping
+     the list as is in its tab).
+  2. Click on the link to the Volume Data file; it is visible under "Files" in the
+     top panel, and also further down in the field "Volume data by Excel..."
+     It is the same file.
+
 
 ### Create the merged files
 
 1. Check and set the parameters for the filepaths and other data in
-   the source code file `merge_scilifelab_fellows.py`.
+   the source code file `merge_scilifelab_fellows.py`. This file is
+   imported as a module by the other scripts and its variables are
+   used there.
 
 2. Run the script `merge_scilifelab_fellows.py`, which produces the files
    `Fellows {year} Teaching.xlsx`, `Fellows {year} Grants.xlsx`
